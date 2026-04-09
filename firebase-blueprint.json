@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "Todo": {
+      "title": "Todo",
+      "description": "A task item in the todo list",
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The content of the todo item"
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether the task is finished"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the task was created"
+        },
+        "userId": {
+          "type": "string",
+          "description": "The UID of the owner"
+        }
+      },
+      "required": ["text", "completed", "createdAt", "userId"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User specific settings and profile data",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "photoURL": {
+          "type": "string"
+        },
+        "lastLogin": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["displayName", "email"]
+    }
+  },
+  "firestore": {
+    "/todos/{todoId}": {
+      "schema": "Todo",
+      "description": "Collection of all todo items"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents"
+    }
+  }
+}
